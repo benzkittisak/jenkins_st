@@ -16,8 +16,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh "sudo rm -rf /var/www/jenkins_st"
-                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/jenkins_st/"
+                sh "rm -rf /var/www/jenkins_st"
+                sh "cp -r ${WORKSPACE}/build/ /var/www/jenkins_st/"
             }
         }
     }
