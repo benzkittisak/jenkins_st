@@ -21,12 +21,5 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('Deliver') {
-            steps {
-                sh './script/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './script/kill.sh'
-            }
-        }
     }
 }
