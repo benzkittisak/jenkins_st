@@ -14,12 +14,10 @@ pipeline {
                 sh 'yarn build'
             }
         }
-        stage('Deliver') {
+        stage('Deploy') {
             steps {
-                sh 'chmod a+x ${env.WORKSPACE}'
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                sh "sudo rm -rf /var/www/jenkins_st"
+                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/jenkins_st/"
             }
         }
     }
